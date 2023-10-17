@@ -10,6 +10,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
+
 
 public class RegistrationFormPageObjectsTest {
   RegistrationFormPage registrationFormPage = new RegistrationFormPage();
@@ -39,6 +41,8 @@ public class RegistrationFormPageObjectsTest {
     Attach.pageSource();
     Attach.browserConsoleLogs();
     Attach.addVideo();
+
+    closeWebDriver();
   }
 
   @Tag("regress")
