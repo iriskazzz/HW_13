@@ -2,6 +2,7 @@ package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.demoqa.helpers.Attach;
 import com.demoqa.page.RegistrationFormPage;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
@@ -19,8 +20,6 @@ public class RegistrationFormPageObjectsTest {
     Configuration.baseUrl = "https://demoqa.com";
     Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-    SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
     DesiredCapabilities capabilities = new DesiredCapabilities();
     capabilities.setCapability("selenoid:options", Map.<String, Object>of(
             "enableVNC", true,
@@ -29,13 +28,18 @@ public class RegistrationFormPageObjectsTest {
     Configuration.browserCapabilities = capabilities;
   }
 
-//  @AfterEach
-//  void addAttachments() {
-//    Attach.screenshotAs("Last screenshot");
-//    Attach.pageSource();
-//    Attach.browserConsoleLogs();
-//    Attach.addVideo();
-//  }
+  @BeforeEach
+  void addListener() {
+    SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+  }
+
+  @AfterEach
+  void addAttachments() {
+    Attach.screenshotAs("Last screenshot");
+    Attach.pageSource();
+    Attach.browserConsoleLogs();
+    Attach.addVideo();
+  }
 
   @Tag("regress")
   @Test
