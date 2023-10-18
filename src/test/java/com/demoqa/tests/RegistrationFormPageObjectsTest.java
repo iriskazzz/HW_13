@@ -45,8 +45,9 @@ public class RegistrationFormPageObjectsTest {
     closeWebDriver();
   }
 
-  @Tag("regress")
   @Test
+  @Tag("regress")
+  @DisplayName("Проверка полного заполнения формы")
   void fillPracticeForm() {
     registrationFormPage.openPage()
             .setFirstName("Irina")
@@ -77,9 +78,10 @@ public class RegistrationFormPageObjectsTest {
             .checkResult("State and City", "Haryana Karnal");
   }
 
+  @Test
   @Tag("smoke")
   @Tag("regress")
-  @Test
+  @DisplayName("Проверка заполнения только обязательных полей формы")
   void fillPracticeWithMinimumDataForm() {
     registrationFormPage.openPage()
             .setFirstName("Irina")
