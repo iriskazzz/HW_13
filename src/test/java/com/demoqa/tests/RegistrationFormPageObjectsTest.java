@@ -99,4 +99,9 @@ public class RegistrationFormPageObjectsTest {
             .checkResult("Gender", "Female")
             .checkResult("Mobile", "1234567889");
   }
+
+  @Test
+  void test1(){
+    System.out.println("");
+  }
 }
