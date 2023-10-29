@@ -101,7 +101,8 @@ public class RegistrationFormPageObjectsTest {
   }
 
   @Test
+  @DisplayName("TestTest")
   void test1(){
-    System.out.println("");
+    registrationFormPage.openPage();
   }
 }
