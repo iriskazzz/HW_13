@@ -29,7 +29,18 @@ dependencies {
             'io.qameta.allure:allure-selenide:2.21.0'
     )
 }
-
-test {
+tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
+task smoke_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("smoke")
+    }
+}
+task regress_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("regress")
+    }
 }
