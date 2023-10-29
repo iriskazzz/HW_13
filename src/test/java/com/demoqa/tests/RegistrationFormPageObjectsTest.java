@@ -100,9 +100,4 @@ public class RegistrationFormPageObjectsTest {
             .checkResult("Mobile", "1234567889");
   }
 
-  @Test
-  @DisplayName("TestTest")
-  void test1(){
-    registrationFormPage.openPage();
-  }
 }
