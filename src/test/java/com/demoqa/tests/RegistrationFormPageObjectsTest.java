@@ -13,40 +13,8 @@ import java.util.Map;
 import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
 
 
-public class RegistrationFormPageObjectsTest {
+public class RegistrationFormPageObjectsTest extends TestBase{
   RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-
-  @BeforeAll
-  static void configure() {
-    Configuration.pageLoadStrategy = "eager";
-    Configuration.baseUrl = "https://demoqa.com";
-    Configuration.browser =  System.getProperty("browserName", "chrome");
-    Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
-    Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-    Configuration.remote = System.getProperty("remoteUrl", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
-
-    DesiredCapabilities capabilities = new DesiredCapabilities();
-    capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-            "enableVNC", true,
-            "enableVideo", true
-    ));
-    Configuration.browserCapabilities = capabilities;
-  }
-
-  @BeforeEach
-  void addListener() {
-    SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-  }
-
-  @AfterEach
-  void addAttachments() {
-    Attach.screenshotAs("Last screenshot");
-    Attach.pageSource();
-    Attach.browserConsoleLogs();
-    Attach.addVideo();
-
-    closeWebDriver();
-  }
 
   @Test
   @Tag("regress")
